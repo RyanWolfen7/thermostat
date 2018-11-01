@@ -1,4 +1,23 @@
 $(document).ready(function () {
+
+  $.get('http://api.openweathermap.org/data/2.5/weather?q=London&appid=72e80e23fc9e40e2ece92a1e77019ac7&units=metric', function(data) {
+  $('#current-temperature').text(data.main.temp);
+  })
+  $('#city').change(function () {
+    var city = $('#city').val();
+    var degree = $('#degree').val();
+  $.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=72e80e23fc9e40e2ece92a1e77019ac7&units=' + degree, function (data) {
+    $('#current-temperature').text(data.main.temp)
+  })
+})
+$('#degree').change(function () {
+  var city = $('#city').val();
+  var degree = $('#degree').val();
+$.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=72e80e23fc9e40e2ece92a1e77019ac7&units=' + degree, function (data) {
+  $('#current-temperature').text(data.main.temp)
+})
+})
+
   var thermostat = new Thermostat();
   updateTemperature();
   updatePowerSave();
